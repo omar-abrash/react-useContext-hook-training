@@ -1,9 +1,11 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useContext } from "react";
 
 import Container from "../UI/Container/Container";
 import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
 import styles from "./LogInForm.module.css";
+
+import AuthContext from "../../store/auth-context";
 
 const formReducerFun = (state, action) => {
   if (action.type === "USER_NAME_INPUT") {
@@ -37,7 +39,8 @@ const formReducerFun = (state, action) => {
   };
 };
 
-const LogInForm = (props) => {
+const LogInForm = () => {
+  const ctx = useContext(AuthContext);
   // we need replace these useStates to useReducer
 
   // const [userName, setUserName] = useState("");
@@ -81,7 +84,7 @@ const LogInForm = (props) => {
 
   const formDataHandler = (event) => {
     event.preventDefault();
-    props.afterEnteredData(formState.userNameInput, formState.passWordInput);
+    ctx.onLogIn(formState.userNameInput, formState.passWordInput);
   };
 
   return (

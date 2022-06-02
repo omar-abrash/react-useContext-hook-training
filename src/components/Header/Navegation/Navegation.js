@@ -10,17 +10,17 @@ const Navegation = () => {
   return (
     <nav className={styles.nav}>
       <ul>
-        {ctx.logInState && (
+        {ctx.isLoggedIn && (
           <li>
             <a href="/">Admin</a>
           </li>
         )}
-        {ctx.logInState && (
+        {ctx.isLoggedIn && (
           <li>
             <a href="/">User</a>
           </li>
         )}
-        {ctx.logInState && (
+        {ctx.isLoggedIn && (
           <li>
             <Button className={styles.btn} onClick={ctx.onLogOut}>
               Log out
